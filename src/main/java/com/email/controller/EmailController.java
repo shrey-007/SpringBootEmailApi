@@ -22,9 +22,10 @@ public class EmailController {
 
     @PostMapping("/sendEmail")
     public ResponseEntity<?> sendEmail(@RequestBody EmailRequest emailRequest){
-
-
-        System.out.println(emailRequest);
+        //jo raw json data postman se aaya hai , usme to, message and subject hai , toh @RequestBody us json object ko
+        // emailRequest ke object mai daal dega.
+        //EmailRequest is just an user defined(i created) entity(pojo) class.
+        //Email send krna ka method EmailService class ke paas hai,toh uska object se sendEmail() call krdo.
         boolean result=this.emailService.sendEmail(emailRequest.getSubject(),emailRequest.getMessage(),emailRequest.getTo());
 
         if(result){
